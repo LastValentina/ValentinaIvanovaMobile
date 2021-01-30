@@ -1,0 +1,11 @@
+# Default ignored files
+# Intellij
+/.idea/
+*.iml
+#LodFiles
+*.log
+#Allure
+**/allure-results
+**/.allure
+# Maven
+/target/
