@@ -86,4 +86,6 @@ public class NativePageObject {
     public boolean checkNewExpenseBtnVisibility() {
         return newExpenseBtn.isDisplayed();
     }
+
+
 }

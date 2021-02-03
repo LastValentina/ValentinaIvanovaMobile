@@ -1,13 +1,14 @@
 package scenarios;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.WebPageObject;
 import setup.BaseTest;
 
 public class webMobileTests extends BaseTest {
 
-    @Test(groups = {"web"}, description = "Make sure that we've opened Google homepage")
+    @Test(groups = {"web"}, description = "Make sure that we've got search results by 'EPAM' via Google")
     public void simpleWebTest() throws InterruptedException, IllegalAccessException, NoSuchFieldException, InstantiationException {
         getDriver().get("https://www.google.com"); // open google homepage
 
@@ -23,22 +24,18 @@ public class webMobileTests extends BaseTest {
 
         //      getPo().getWelement("input").sendKeys("EPAM");
 
-        // Log that test finished
-        System.out.println("Site opening done");
+        System.out.println("Site is opened");
 
         WebPageObject webPO = new WebPageObject(getDriver());
-        webPO.clickSearchBtn();
-        System.out.println("search button is clicked");
-        webPO.enterSearchRequest("EPAM");
-
-
-        //   getDriver().getKeyboard().sendKeys(new KeyEvent(AndroidKey.ENTER));
-        // driver.pressKey(new KeyEvent(AndroidKey.ENTER));
-
-
+        webPO.clickSearchBtn()
+                .enterSearchRequest("EPAM");
+        System.out.println("search is done");
         System.out.println("search by EPAM is done");
         System.out.println(webPO.checkSearchResultListSize());
-
+        Assert.assertTrue(webPO.checkSearchResultListSize() > 0, "There is zero- result list");
+        webPO.checkFistReferenceOfSearchResultList();
+        // Log that test finished
+        System.out.println("Site is opened");
     }
 
 }

@@ -1,6 +1,7 @@
 package pageObjects;
 
 import io.appium.java_client.AppiumDriver;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -24,6 +25,7 @@ public class WebPageObject {
 
     public WebPageObject enterSearchRequest(String text) {
         searchReq.sendKeys(text);
+        searchReq.sendKeys(Keys.ENTER);
         return this;
     }
 
@@ -34,6 +36,11 @@ public class WebPageObject {
 
     public int checkSearchResultListSize() {
         return searchResults.size();
+    }
+
+    public WebPageObject checkFistReferenceOfSearchResultList() {
+        searchResults.get(0).click();
+        return this;
     }
 
 }
