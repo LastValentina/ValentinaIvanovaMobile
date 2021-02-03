@@ -36,10 +36,15 @@ public class BaseTest implements IDriver {
 
     }
 
+    @Parameters("deviceName")
     @AfterSuite(alwaysRun = true)
-    public void tearDown() throws Exception {
+    public void tearDown(String deviceName) throws Exception {
         System.out.println("After");
         appiumDriver.closeApp();
+        //      try {
+        //          Runtime.getRuntime().exec(format("adb -s %s emu kill", deviceName));  //close emulator adb -s emulator-5554 emu kill
+        //          System.out.println("emulator is closed");
+        //      } catch (IOException e) { System.out.println("emulator wasn't closed");}
     }
 
     private void setAppiumDriver(String platformName, String deviceName, String browserName, String app) {
