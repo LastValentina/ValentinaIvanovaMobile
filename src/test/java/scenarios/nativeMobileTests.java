@@ -1,43 +1,27 @@
 package scenarios;
 
-import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.NativePageObject;
+import pageObjects.epamApp.BudgetActivityPage;
+import pageObjects.epamApp.EpamLoginPage;
 import setup.BaseTest;
+import testdata.TestDataProvider;
 
 import java.io.File;
 import java.io.IOException;
 
 public class nativeMobileTests extends BaseTest {
 
-    @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/registration_email")
-    private WebElement registrationEmail;
-    @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/registration_username")
-    private WebElement registrationUsername;
-    @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/registration_password")
-    private WebElement registrationPassword;
-    @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/registration_confirm_password")
-    private WebElement confirmPassword;
-    @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/register_new_account_button")
-    private WebElement newAccountBtn;
+    @Test(enabled = true, groups = {"native"}, description = "loggin test after registration new user's account",
+            dataProviderClass = TestDataProvider.class, dataProvider = "dataForNativeTest")
+    public void registerTest(String userEmail, String userLogin, String userPassword) {
 
-    @Test(enabled = false, groups = {"native"}, description = "loggin test after registration new user's account")
-    public void registerTest() throws IllegalAccessException, NoSuchFieldException, InstantiationException {
-        final String userLogin = "a.@epam.com", userPassword = "12345678";
-        //       getPo().getWelement("login").sendKeys("a.@epam.com");
-        //       getPo().getWelement("password").sendKeys("a123");
-        //       getPo().getWelement("registerBnt").click();
-//        System.out.println("Simplest Android native test done");
-
-        NativePageObject epamPO = new NativePageObject(getDriver());
-
+        EpamLoginPage epamPO = new EpamLoginPage(appiumDriver);
         epamPO.clickRegisterBtn()
-                .enterEmailDuringRegistration(userLogin)
+                .enterEmailDuringRegistration(userEmail)
                 .enterUserDuringRegistration(userLogin)
                 .enterPasswordDuringRegistration(userPassword)
                 .confirmPasswordDuringRegistration(userPassword)
@@ -45,29 +29,27 @@ public class nativeMobileTests extends BaseTest {
                 .enterLogin(userLogin)
                 .enterPassword(userPassword)
                 .clickSignInBtn();
-        Assert.assertTrue(epamPO.checkNewExpenseBtnVisibility(), "page BudgetActivity wasn't opened");
-        System.out.println("Registration new account & then logging in test done:");
-        System.out.println("page BudgetActivity has appeared");
+        Assert.assertTrue(new BudgetActivityPage(appiumDriver).checkNewExpenseBtnVisibility(),
+                "page BudgetActivity wasn't opened");
+        System.out.println("Registration new account & then logging test done:");
     }
 
-    @Test(groups = {"native"}, description = "Simple test just click on the Sign In button")
-    public void simpleNativeTest() throws IllegalAccessException, NoSuchFieldException, InstantiationException, IOException, InterruptedException {
-//        getPo().getWelement("signInBtn").click();
-        NativePageObject epamPO = new NativePageObject(getDriver());
+    @Test(enabled = false, groups = {"native"}, description = "Simple test just click on the Sign In button")
+    public void simpleNativeTest() throws IOException, InterruptedException {
+        EpamLoginPage epamPO = new EpamLoginPage(appiumDriver);
         epamPO.clickSignInBtn();
         makeScreenshot();
-
-        System.out.println("Simplest Android native test done");
-
-
+//        new TemplateMatching();
     }
 
     public void makeScreenshot() throws InterruptedException, IOException {
-        TakesScreenshot sc = (TakesScreenshot) getDriver();
+        String path = ".//src/main/java/utils/image";
+        for (File myFile : new File(path).listFiles()) {
+            if (myFile.isFile()) myFile.delete();
+        }
         Thread.sleep(5000);
+        TakesScreenshot sc = (TakesScreenshot) appiumDriver;
         File screensFile = sc.getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(screensFile, new File("C:\\Users\\ad\\WebDrivers\\screenShotHW2.png"));
-
-
+        FileUtils.copyFile(screensFile, new File(".//src/main/java/utils/image/signInScreenshot.png"));
     }
 }

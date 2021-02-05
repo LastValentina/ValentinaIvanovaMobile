@@ -23,6 +23,16 @@
             <artifactId>testng</artifactId>
             <version>7.1.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.openpnp</groupId>
+            <artifactId>opencv</artifactId>
+            <version>3.2.0-0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bytedeco.javacpp-presets</groupId>
+            <artifactId>opencv</artifactId>
+            <version>4.0.1-1.4.4</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -71,10 +81,9 @@
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <suite.file>./src/test/resources/webTNG.xml</suite.file>
+                <suite.file>${project.basedir}/src/test/resources/webTNG.xml</suite.file>
             </properties>
         </profile>
     </profiles>
-
 
 </project>
