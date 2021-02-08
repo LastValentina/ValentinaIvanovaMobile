@@ -17,8 +17,8 @@ public class webMobileTests extends BaseTest {
         googlePO.openPage()
                 .clickSearchBtn()
                 .enterSearchRequest(expression);
-        Assert.assertTrue(googlePO.checkSearchResultListSize() > 0, "Result list is empty");
-        googlePO.checkFistReferenceOfSearchResultList();
+        Assert.assertTrue(googlePO.getSearchResultListSize() > 0, "Result list is empty");
+        googlePO.clickOnReferenceFromSearchResultList(0);
         System.out.println(format("search by %s is done", expression));             // Log that test finished
     }
 

@@ -35,12 +35,12 @@ public class GoogleHomePage extends WebPageObject {
         return this;
     }
 
-    public int checkSearchResultListSize() {
+    public int getSearchResultListSize() {
         return searchResults.size();
     }
 
-    public void checkFistReferenceOfSearchResultList() {
-        searchResults.get(0).click();
+    public void clickOnReferenceFromSearchResultList(int i) {
+        searchResults.get(i).click();
     }
 
     public GoogleHomePage openPage() {

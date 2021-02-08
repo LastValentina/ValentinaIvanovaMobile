@@ -29,6 +29,6 @@ public class Driver implements IDriver {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        appiumDriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        appiumDriver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
     }
 }
