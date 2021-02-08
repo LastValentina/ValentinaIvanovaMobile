@@ -72,7 +72,7 @@
         <profile>
             <id>native</id>
             <activation>
-                <activeByDefault>false</activeByDefault>
+                <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
                 <suite.file>${project.basedir}/src/test/resources/nativeTNG.xml</suite.file>
@@ -89,15 +89,15 @@
             </properties>
         </profile>
 
-        <profile>
-            <id>cloudWeb</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <suite.file>./src/test/resources/cloud/cloudWebTNG.xml</suite.file>
-            </properties>
-        </profile>
+        <!--      <profile>
+                  <id>cloudWeb</id>
+                  <activation>
+                      <activeByDefault>false</activeByDefault>
+                  </activation>
+                  <properties>
+                      <suite.file>./src/test/resources/cloud/cloudWebTNG.xml</suite.file>
+                  </properties>
+              </profile>  -->
     </profiles>
 
 </project>
