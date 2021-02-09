@@ -36,6 +36,12 @@
             <artifactId>opencv</artifactId>
             <version>4.0.1-1.4.4</version>
         </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>4.2.0</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -49,8 +55,8 @@
                         <suiteXmlFile>${suite.file}</suiteXmlFile>
                     </suiteXmlFiles>
                     <systemPropertyVariables>
-                        <ts.appium>http://localhost:4723/wd/hub</ts.appium>
-                        <!--                      <ts.appium>https://EPM-TSTF:${token}@mobilecloud.epam.com/wd/hub</ts.appium> -->
+                        <!--          <ts.appium>http://localhost:4723/wd/hub</ts.appium> -->
+                        <ts.appium>https://EPM-TSTF:${token}@mobilecloud.epam.com/wd/hub</ts.appium>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
@@ -69,35 +75,62 @@
     </build>
 
     <profiles>
+        <!--    <profile>
+                <id>native</id>
+                <activation>
+                    <activeByDefault>false</activeByDefault>
+                </activation>
+                <properties>
+                    <suite.file>${project.basedir}/src/test/resources/nativeTNG.xml</suite.file>
+                </properties>
+            </profile>
+
+            <profile>
+                <id>web</id>
+                <activation>
+                    <activeByDefault>false</activeByDefault>
+                </activation>
+                <properties>
+                    <suite.file>${project.basedir}/src/test/resources/webTNG.xml</suite.file>
+                </properties>
+            </profile>-->
+
         <profile>
-            <id>native</id>
+            <id>cloudWeb</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suite.file>${project.basedir}/src/test/resources/nativeTNG.xml</suite.file>
+                <suite.file>./src/test/resources/cloud/cloudWebTNG.xml</suite.file>
             </properties>
         </profile>
-
         <profile>
-            <id>web</id>
+            <id>cloudWebIoS</id>
             <activation>
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <suite.file>${project.basedir}/src/test/resources/webTNG.xml</suite.file>
+                <suite.file>./src/test/resources/cloud/cloudWebIosTNG.xml</suite.file>
             </properties>
         </profile>
-
-        <!--      <profile>
-                  <id>cloudWeb</id>
-                  <activation>
-                      <activeByDefault>false</activeByDefault>
-                  </activation>
-                  <properties>
-                      <suite.file>./src/test/resources/cloud/cloudWebTNG.xml</suite.file>
-                  </properties>
-              </profile>  -->
+        <profile>
+            <id>cloudNative</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>./src/test/resources/cloud/cloudNativeTNG.xml</suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>cloudNativeIoS</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>./src/test/resources/cloud/cloudNativeIosTNG.xml</suite.file>
+            </properties>
+        </profile>
     </profiles>
 
 </project>
