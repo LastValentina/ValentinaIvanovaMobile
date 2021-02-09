@@ -39,10 +39,6 @@ public class GoogleHomePage extends WebPageObject {
         return searchResults.size();
     }
 
-    public void clickOnReferenceFromSearchResultList(int i) {
-        searchResults.get(i).click();
-    }
-
     public GoogleHomePage openPage() {
         driver.get(HOME_URL);
         return this;
