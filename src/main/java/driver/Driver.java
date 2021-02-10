@@ -40,6 +40,7 @@ public class Driver implements IDriver {
             e.printStackTrace();
         }
         // Timeouts tuning
-        appiumDriver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
+        appiumDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
+
 }
