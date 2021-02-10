@@ -16,11 +16,19 @@ public class BaseTest {
         return po;
     }
 
-    @Parameters({"platformName", "appType", "deviceName", "browserName", "app"})
+    @Parameters({"platformName", "appType", "deviceName", "udid", "browserName", "app", "appPackage", "appActivity", "bundleId"})
     @BeforeSuite(alwaysRun = true)
-    public void setUp(String platformName, String appType, String deviceName, @Optional("") String browserName, @Optional("") String app) throws Exception {
+    public void setUp(String platformName, String appType,
+                      @Optional("") String deviceName,
+                      @Optional("") String udid,
+                      @Optional("") String browserName,
+                      @Optional("") String app,
+                      @Optional("") String appPackage,
+                      @Optional("") String appActivity,
+                      @Optional("") String bundleId) throws Exception {
         System.out.println("Before: app type - " + appType);
-        appiumDriver = new Driver(platformName, deviceName, browserName, app).getDriver();
+        //      setAppiumDriver(platformName, deviceName, udid, browserName, app, appPackage, appActivity, bundleId);
+        appiumDriver = new Driver(platformName, deviceName, udid, browserName, app, appPackage, appActivity, bundleId).getDriver();
         setPageObject(appType, appiumDriver);
     }
 
