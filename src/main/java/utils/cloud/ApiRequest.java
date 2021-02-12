@@ -2,8 +2,6 @@ package utils.cloud;
 
 import io.restassured.response.Response;
 
-import java.io.File;
-
 import static io.restassured.RestAssured.given;
 import static java.lang.String.format;
 
@@ -16,6 +14,7 @@ public class ApiRequest {
     public static void main(String[] args) {
 
         takeDevice("520029ade81da58f", System.getenv("TOKEN"));
+        //should be fileId instead of appPath
         appInstall("520029ade81da58f", System.getenv("TOKEN"), ".//src/main/resources/EPAMTestApp.apk");
     }
 
@@ -27,11 +26,11 @@ public class ApiRequest {
         System.out.println("Response Status code is " + response.getStatusCode()); // Log for status code
     }
 
-    private static void appInstall(String serial, String key, String appPath) {
+    private static void appInstall(String serial, String key, String fileId) {
         System.out.println("start app installation");
         Response response = given().header("Authorization", format("Bearer %s", key))
-                .when().get(format("%s/storage/install/%s/%s", API_URL, serial, new File(appPath)));
+                .when().get(format("%s/storage/install/%s/%s", API_URL, serial, fileId));
         System.out.println("Response Status code is " + response.getStatusCode()); // Log for status code
-        response.getBody().prettyPrint();
+        response.getBody().prettyPeek();
     }
 }

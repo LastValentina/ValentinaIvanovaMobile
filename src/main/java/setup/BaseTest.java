@@ -27,7 +27,6 @@ public class BaseTest {
                       @Optional("") String appActivity,
                       @Optional("") String bundleId) throws Exception {
         System.out.println("Before: app type - " + appType);
-        //      setAppiumDriver(platformName, deviceName, udid, browserName, app, appPackage, appActivity, bundleId);
         appiumDriver = new Driver(platformName, deviceName, udid, browserName, app, appPackage, appActivity, bundleId).getDriver();
         setPageObject(appType, appiumDriver);
     }
@@ -42,6 +41,5 @@ public class BaseTest {
     private void setPageObject(String appType, AppiumDriver appiumDriver) throws Exception {
         po = new PageObject(appType, appiumDriver);
     }
-
 
 }
