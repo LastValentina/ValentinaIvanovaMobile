@@ -1,5 +1,7 @@
 # ValentinaIvanovaMobile
+
 To run the project you should:
--	run an emulator by using AVD Manager in Android Studio (or connect a physical device through USB port to your machine but in this case you have to change value for parameter **deviceName** into TestNG xml files: nativeTNG.xml and webTNG.xml)   
--	start the Appium server at your machine 
--	clone repository and run the project from command line by using **mvn clean test -P native** (for native application tests ) or **mvn clean test -P web** (for web test)
+-	Use EPAM mobile cloud ( https://mobilecloud.epam.com )
+-	Safe your API-key as system environment variable “TOKEN” 
+-	 clone repository and run the project from command line by using “mvn clean test -P [Profile name] “
+-	N.B. if you would like to use definite Mobile unit you should change parameters deviceName & udid (serial number) in proper xml-file from package test.resources.cloud
