@@ -87,4 +87,10 @@ public class EpamLoginPage extends NativePageObject {
         return this;
     }
 
+    public EpamLoginPage clickAgreeBtn(String platformName) {
+        if (platformName.contains("iOS")) {
+            agreeBtn.click();
+        }
+        return this;
+    }
 }

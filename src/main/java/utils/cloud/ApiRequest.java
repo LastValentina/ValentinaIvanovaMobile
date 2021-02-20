@@ -12,7 +12,7 @@ public class ApiRequest {
     }
 
     public static void main(String[] args) {
-//        takeDevice("YPNBZ975QOQCWKUG");
+        //        takeDevice("YPNBZ975QOQCWKUG");
         //       stopUseDevice("YPNBZ975QOQCWKUG");
     }
 
@@ -35,8 +35,7 @@ public class ApiRequest {
         System.out.println("Stop using device with unique id");
         Response response = given().header("Authorization", format("Bearer %s", API_KEY))
                 .header("Content-Type", "application/json")
-                .when().delete(format("%s/device/%s", API_URL, serial))
-                .prettyPeek();
+                .when().delete(format("%s/device/%s", API_URL, serial));            //.prettyPeek();
         System.out.println("Response Status code is " + response.getStatusCode()); // Log for status code
     }
 

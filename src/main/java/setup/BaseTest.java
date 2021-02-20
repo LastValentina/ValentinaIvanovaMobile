@@ -31,7 +31,6 @@ public class BaseTest {
         System.out.println("Before: app type - " + appType);
         appiumDriver = new Driver(platformName, deviceName, udid, browserName, app, appPackage, appActivity, bundleId).getDriver();
         setPageObject(appType, appiumDriver);
-
         apiRequest.takeDevice(udid);
     }
 
@@ -41,6 +40,7 @@ public class BaseTest {
         System.out.println("After Suite");
         appiumDriver.closeApp();
         apiRequest.stopUseDevice(udid);
+        appiumDriver.quit();
     }
 
     private void setPageObject(String appType, AppiumDriver appiumDriver) throws Exception {

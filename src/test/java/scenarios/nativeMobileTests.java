@@ -25,6 +25,7 @@ public class nativeMobileTests extends BaseTest {
                 .enterUserDuringRegistration(userLogin)
                 .enterPasswordDuringRegistration(userPassword)
                 .confirmPasswordDuringRegistration(userPassword)
+                .clickAgreeBtn(appiumDriver.getPlatformName())
                 .clickNewAccountBtn()
                 .enterLogin(userLogin)
                 .enterPassword(userPassword)

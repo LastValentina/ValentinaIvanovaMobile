@@ -4,7 +4,7 @@
     <parameter name="deviceName" value="SAMSUNG SM-G532F"/>
     <parameter name="udid" value="9201c29b8dcf3597"/>
     <!--      <parameter name="deviceName" value="SAMSUNG SM-J701F"/>
-        <parameter name="udid" value="52002bc8e8c8a55b"/> -->
+         <parameter name="udid" value="52002bc8e8c8a55b"/> -->
     <parameter name="platformName" value="Android"/>
     <parameter name="appPackage" value="platkovsky.alexey.epamtestapp"/>
     <parameter name="appActivity" value="activities.LoginActivity"/>
