@@ -5,7 +5,7 @@
         <parameter name="udid" value="00008030-0000798A0EF2802E"/>  -->
     <!--  <parameter name="deviceName" value="IPHONE 6s"/>
        <parameter name="udid" value="00008030-0000798A0EF2802E"/>  -->
-    <parameter name="udid" value="0dcc248ceb2c07186c68ce3e5a929ab00635d79b"/>
+    <parameter name="udid" value="00008020-001634923E92002E"/>
     <!--parameter name="udid" value="0dcc248ceb2c07186c68ce3e5a929ab00635d79b"></parameter-->
     <parameter name="platformName" value="iOS"/>
     <parameter name="browserName" value="Safari"/>

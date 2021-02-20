@@ -10,9 +10,11 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <token>
-                ${env.TOKEN}
-        </token>
+        <token>${env.TOKEN}</token>
+        <testng.version>7.1.0</testng.version>
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <selenium-java.version>3.141.59</selenium-java.version>
     </properties>
 
     <dependencies>
@@ -24,7 +26,7 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.1.0</version>
+            <version>${testng.version}</version>
         </dependency>
         <dependency>
             <groupId>org.openpnp</groupId>
@@ -40,14 +42,33 @@
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
             <version>4.2.0</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>2.0.0-alpha1</version>
+            <version>1.7.30</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-nop</artifactId>
+            <version>1.7.30</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-chrome-driver</artifactId>
+            <version>${selenium-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-api</artifactId>
+            <version>${selenium-java.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -55,7 +76,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <suiteXmlFiles>
                         <suiteXmlFile>${suite.file}</suiteXmlFile>
@@ -69,8 +90,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <!-- version -->
-                <version>3.8.1</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -107,7 +127,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suite.file>./src/test/resources/cloud/cloudWebTNG.xml</suite.file>
+                <suite.file>${project.basedir}/src/test/resources/cloud/cloudWebTNG.xml</suite.file>
             </properties>
         </profile>
         <profile>
@@ -116,7 +136,7 @@
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <suite.file>./src/test/resources/cloud/cloudWebIosTNG.xml</suite.file>
+                <suite.file>${project.basedir}/src/test/resources/cloud/cloudWebIosTNG.xml</suite.file>
             </properties>
         </profile>
         <profile>
@@ -125,7 +145,7 @@
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <suite.file>./src/test/resources/cloud/cloudNativeTNG.xml</suite.file>
+                <suite.file>${project.basedir}/src/test/resources/cloud/cloudNativeTNG.xml</suite.file>
             </properties>
         </profile>
         <profile>
@@ -134,7 +154,7 @@
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <suite.file>./src/test/resources/cloud/cloudNativeIosTNG.xml</suite.file>
+                <suite.file>${project.basedir}/src/test/resources/cloud/cloudNativeIosTNG.xml</suite.file>
             </properties>
         </profile>
     </profiles>
